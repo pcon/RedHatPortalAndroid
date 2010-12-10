@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, ShowHome!</string>
-    <string name="app_name">Red Hat Portal</string>
+	<string name="hello">Hello World, ShowHome!</string>
+	<string name="app_name">Red Hat Portal</string>
+
+	<string name="new_case">New Case</string>
+	<string name="setup">Setup</string>
+	<string name="about">About</string>
+	<string name="sort">Sort</string>
+	<string name="okay">Okay</string>
+	<string name="about.title">Case Management App</string>
+	<string name="about.message">Red Hat GSS!</string>
+	<string name="caseView.title">Case Viewer</string>
+	<string name="caseView.top.title">Title</string>
+	<string name="caseView.top.status">Status</string>
+	<string-array name="main_menu_array">
+		<item>00379476</item>
+		<item>00379477</item>
+		<item>00379478</item>
+		<item>00379479</item>
+		<item>00379476</item>
+		<item>00379477</item>
+		<item>00379478</item>
+		<item>00379479</item>
+		<item>00379476</item>
+		<item>00379477</item>
+		<item>00379478</item>
+		<item>00379479</item>
+		<item>00379476</item>
+		<item>00379477</item>
+		<item>00379478</item>
+		<item>00379479</item>
+	</string-array>
 </resources>
