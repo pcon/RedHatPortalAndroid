@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.redhat.gss.strata.model.Case;
+
 public class CaseView extends Activity {
 
 	final String tag = "CaseView: ";
