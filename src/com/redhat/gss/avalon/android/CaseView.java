@@ -44,7 +44,10 @@ public class CaseView extends Activity {
 
 		Collections.reverse(comments);
 
+		final ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments);
+		// aa.getView(position, convertView, parent);
+
 		final ListView commentList = (ListView) findViewById(R.id.commentList);
-		commentList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments));
+		commentList.setAdapter(aa);
 	}
 }

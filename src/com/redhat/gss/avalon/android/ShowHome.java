@@ -50,7 +50,7 @@ public class ShowHome extends Activity {
 
 		mainList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				int caseNum = Integer.parseInt(caseSummary.get(position).get("caseNumber").toString());
+				String caseNum = caseSummary.get(position).get("caseNumber").toString();
 				Log.v(TAG, "you picked: " + caseNum);
 				launchCaseView(caseNum);
 			}
@@ -58,7 +58,7 @@ public class ShowHome extends Activity {
 
 	}
 
-	protected void launchCaseView(int caseNum) {
+	protected void launchCaseView(String caseNum) {
 		Intent i = new Intent(getApplicationContext(), CaseView.class);
 		i.putExtra("caseNumber", caseNum);
 		startActivityForResult(i, 0);
