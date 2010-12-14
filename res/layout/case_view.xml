@@ -16,9 +16,11 @@
 				android:padding="3dip" />
 			<TextView android:id="@+id/status" android:padding="3dip" />
 		</TableRow>
+
+		<ListView android:layout_width="fill_parent" android:id="@+id/commentList"
+			android:layout_height="wrap_content" android:layout_weight="1" />
 	</TableLayout>
 
-	<ListView android:layout_width="fill_parent" android:id="@+id/commentList"
-		android:layout_height="wrap_content" android:layout_weight="1" />
+
 
 </LinearLayout>

@@ -22,14 +22,18 @@ public class CaseController {
 		final List<Comment> comments = new ArrayList<Comment>();
 
 		Comment comment = new Comment();
-		comment.setTitle("Comment Title");
 		comment.setText("Issue Created (Severity: 2)");
 		comments.add(comment);
 
 		comment = new Comment();
-		comment.setTitle("Comment Title");
-		comment.setText("Thanks for the reply. Yes we will wait for the 5.1.0 release.");
+		comment.setText("Commets go here!");
 		comments.add(comment);
+
+		for (int i = 0; i < 50; i++) {
+			comment = new Comment();
+			comment.setText("Test comment " + i);
+			comments.add(comment);
+		}
 
 		return comments;
 	}

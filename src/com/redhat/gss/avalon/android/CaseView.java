@@ -1,6 +1,7 @@
 package com.redhat.gss.avalon.android;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
@@ -40,6 +41,8 @@ public class CaseView extends Activity {
 		for (Comment comment : new CaseController().getAllComments(caseNumber)) {
 			comments.add(comment.getText());
 		}
+
+		Collections.reverse(comments);
 
 		final ListView commentList = (ListView) findViewById(R.id.commentList);
 		commentList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments));
