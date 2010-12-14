@@ -3,10 +3,13 @@ package com.redhat.gss.avalon.android;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
+
 import com.redhat.gss.strata.model.Case;
 import com.redhat.gss.strata.model.Comment;
 
 public class CaseController {
+
 	public Case getCase(String caseNumber) {
 		Case kase = new Case();
 
@@ -39,8 +42,10 @@ public class CaseController {
 	}
 
 	public List<Case> getAllCases() {
+	
 		CaseParser cp = new CaseParser();
-		return cp.getAllCases();
+		caseList = cp.getAllCases();
+		return caseList;
 	}
 
 	public List<Comment> getComments(String caseNumber) {
