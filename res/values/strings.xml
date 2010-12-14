@@ -13,22 +13,4 @@
 	<string name="caseView.title">Case Viewer</string>
 	<string name="caseView.top.title">Title</string>
 	<string name="caseView.top.status">Status</string>
-	<string-array name="main_menu_array">
-		<item>00379476</item>
-		<item>00379477</item>
-		<item>00379478</item>
-		<item>00379479</item>
-		<item>00379476</item>
-		<item>00379477</item>
-		<item>00379478</item>
-		<item>00379479</item>
-		<item>00379476</item>
-		<item>00379477</item>
-		<item>00379478</item>
-		<item>00379479</item>
-		<item>00379476</item>
-		<item>00379477</item>
-		<item>00379478</item>
-		<item>00379479</item>
-	</string-array>
 </resources>

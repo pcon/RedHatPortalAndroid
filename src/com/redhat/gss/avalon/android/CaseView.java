@@ -1,5 +1,8 @@
 package com.redhat.gss.avalon.android;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.redhat.gss.strata.model.Case;
+import com.redhat.gss.strata.model.Comment;
 
 public class CaseView extends Activity {
 
@@ -19,21 +23,25 @@ public class CaseView extends Activity {
 		setContentView(R.layout.case_view);
 
 		final Bundle extras = getIntent().getExtras();
-		int caseNumber = extras.getInt("caseNumber");
+		String caseNumber = extras.getString("caseNumber");
 		Log.v(tag, "Created and recived the case number " + caseNumber);
 
 		setTitle("Case " + caseNumber);
 
+		final Case supportCase = new CaseController().getCase(caseNumber);
+
 		final TextView title = (TextView) findViewById(R.id.title);
-		title.setText("Encrypt SSLPassword for native connectors on JBoss");
+		title.setText(supportCase.getDescription());
 
 		final TextView status = (TextView) findViewById(R.id.status);
-		status.setText("Waiting on Red Hat");
+		status.setText(supportCase.getStatus());
 
-		final String[] comments = { "Issue Created (Severity: 2)",
-				"Thanks for the reply. Yes we will wait for the 5.1.0 release." };
+		final List<String> comments = new ArrayList<String>();
+		for (Comment comment : new CaseController().getAllComments(caseNumber)) {
+			comments.add(comment.getText());
+		}
+
 		final ListView commentList = (ListView) findViewById(R.id.commentList);
-		commentList.setAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, comments));
+		commentList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments));
 	}
 }

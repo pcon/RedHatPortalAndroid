@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.redhat.gss.strata.model.Case;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -31,12 +33,14 @@ public class ShowHome extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		final String[] mainMenuArr = getResources().getStringArray(R.array.main_menu_array);
+		final CaseController cc = new CaseController();
+		final List<Case> caseList = cc.getAllCases();
+
 		final List<Map<String, ?>> caseSummary = new ArrayList<Map<String, ?>>();
-		for (String str : mainMenuArr) {
+		for (Case supportCase : caseList) {
 			final Map<String, Object> map = new HashMap<String, Object>();
-			map.put("caseNumber", str);
-			map.put("caseTitle", "Case title goes here (" + str + ").");
+			map.put("caseNumber", supportCase.getCaseNumber());
+			map.put("caseTitle", supportCase.getDescription());
 			caseSummary.add(map);
 		}
 

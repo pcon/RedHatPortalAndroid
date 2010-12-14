@@ -1,9 +1,10 @@
 package com.redhat.gss.avalon.android;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.redhat.gss.strata.model.Case;
 import com.redhat.gss.strata.model.Comment;
-import java.util.List;
-import java.util.ArrayList;
 
 public class CaseController {
 	public Case getCase(String caseNumber) {
@@ -13,8 +14,24 @@ public class CaseController {
 		kase.setSummary("[1] This is a sample test kase");
 		kase.setDescription("[1] This is a sample description");
 		kase.setSeverity("1 (Urgent)");
-
+		kase.setStatus("Status goes here");
 		return kase;
+	}
+
+	public List<Comment> getAllComments(String caseNumber) {
+		final List<Comment> comments = new ArrayList<Comment>();
+
+		Comment comment = new Comment();
+		comment.setTitle("Comment Title");
+		comment.setText("Issue Created (Severity: 2)");
+		comments.add(comment);
+
+		comment = new Comment();
+		comment.setTitle("Comment Title");
+		comment.setText("Thanks for the reply. Yes we will wait for the 5.1.0 release.");
+		comments.add(comment);
+
+		return comments;
 	}
 
 	public List<Case> getAllCases() {
