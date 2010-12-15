@@ -16,6 +16,16 @@
 				android:padding="3dip" />
 			<TextView android:id="@+id/status" android:padding="3dip" />
 		</TableRow>
+		<TableRow>
+			<TextView android:text="@string/caseView.top.owner"
+				android:padding="3dip" />
+			<TextView android:id="@+id/owner" android:padding="3dip" />
+		</TableRow>
+		<TableRow>
+			<TextView android:text="@string/caseView.top.severity"
+				android:padding="3dip" />
+			<TextView android:id="@+id/severity" android:padding="3dip" />
+		</TableRow>
 
 		<ListView android:layout_width="fill_parent" android:id="@+id/commentList"
 			android:layout_height="wrap_content" android:layout_weight="1" />

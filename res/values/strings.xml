@@ -13,4 +13,6 @@
 	<string name="caseView.title">Case Viewer</string>
 	<string name="caseView.top.title">Title</string>
 	<string name="caseView.top.status">Status</string>
+	<string name="caseView.top.owner">Owner</string>
+	<string name="caseView.top.severity">Severtiy</string>
 </resources>
