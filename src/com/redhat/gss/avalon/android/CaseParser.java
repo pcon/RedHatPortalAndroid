@@ -6,6 +6,7 @@ import java.util.List;
 import com.redhat.gss.strata.model.Case;
 
 public class CaseParser {
+
 	public List<Case> getAllCases() {
 		Case kase = new Case();
 
@@ -40,7 +41,8 @@ public class CaseParser {
 		kases.add(kase2);
 		kases.add(kase3);
 		kases.add(kase4);
-			
+
 		return kases;
 	}
+
 }
