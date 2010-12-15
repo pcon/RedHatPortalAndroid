@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.redhat.gss.strata.model.Case;
-import com.redhat.gss.strata.model.Comment;
 
 public class CaseParser {
 	public List<Case> getAllCases() {

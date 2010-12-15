@@ -36,6 +36,12 @@ public class CaseView extends Activity {
 		final TextView status = (TextView) findViewById(R.id.status);
 		status.setText(supportCase.getStatus());
 
+		final TextView owner = (TextView) findViewById(R.id.owner);
+		owner.setText(supportCase.getOwner());
+
+		final TextView severity = (TextView) findViewById(R.id.severity);
+		severity.setText(supportCase.getSeverity());
+
 		final List<String> comments = new ArrayList<String>();
 		for (Comment comment : new CaseController().getAllComments(caseNumber)) {
 			comments.add(comment.getText());

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.redhat.gss.strata.model.Case;
 import com.redhat.gss.strata.model.Comment;
