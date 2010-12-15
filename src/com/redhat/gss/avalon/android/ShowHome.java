@@ -34,7 +34,7 @@ public class ShowHome extends Activity {
 		setContentView(R.layout.main);
 
 		final CaseController cc = new CaseController();
-		final List<Case> caseList = cc.getAllCases();
+		final List<Case> caseList = cc.getAllCases(this);
 
 		final List<Map<String, ?>> caseSummary = new ArrayList<Map<String, ?>>();
 		for (Case supportCase : caseList) {

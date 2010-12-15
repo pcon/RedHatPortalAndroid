@@ -29,7 +29,7 @@ public class CaseView extends Activity {
 
 		setTitle("Case " + caseNumber);
 
-		final Case supportCase = new CaseController().getCase(caseNumber);
+		final Case supportCase = new CaseController().getCase(this, caseNumber);
 
 		final TextView title = (TextView) findViewById(R.id.title);
 		title.setText(supportCase.getDescription());
