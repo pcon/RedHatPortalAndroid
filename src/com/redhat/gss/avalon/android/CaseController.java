@@ -3,6 +3,7 @@ package com.redhat.gss.avalon.android;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.redhat.gss.strata.model.Case;
@@ -10,14 +11,18 @@ import com.redhat.gss.strata.model.Comment;
 
 public class CaseController {
 
-	public Case getCase(String caseNumber) {
-		Case kase = new Case();
+	public Case getCase(Context context, String caseNumber) {
+		DataHelper helper = new DataHelper(context);
 
-		kase.setCaseNumber("1234");
-		kase.setSummary("[1] This is a sample test kase");
-		kase.setDescription("[1] This is a sample description");
-		kase.setSeverity("1 (Urgent)");
-		kase.setStatus("Status goes here");
+		Case kase = helper.selectCase(caseNumber);
+
+		if (kase == null) {
+			//Just a place holder
+			CaseParser cp = new CaseParser();
+			List<Case> caseList = cp.getAllCases();
+			kase = caseList.get(0);
+		}
+
 		return kase;
 	}
 
@@ -41,10 +46,15 @@ public class CaseController {
 		return comments;
 	}
 
-	public List<Case> getAllCases() {
-	
-		CaseParser cp = new CaseParser();
-		caseList = cp.getAllCases();
+	public List<Case> getAllCases(Context context) {
+		DataHelper helper = new DataHelper(context);
+		List<Case> caseList = helper.selectAllCases();
+
+		if (caseList.isEmpty()) {
+			CaseParser cp = new CaseParser();
+			caseList = cp.getAllCases();
+		}
+
 		return caseList;
 	}
 
