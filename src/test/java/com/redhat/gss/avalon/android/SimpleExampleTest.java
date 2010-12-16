@@ -2,26 +2,25 @@ package com.redhat.gss.avalon.android;
 
 import java.io.File;
 
+import junit.framework.Assert;
+
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.testng.annotations.Test;
 
+import com.redhat.gss.avalon.android.model.Case;
+
 @Test
 public class SimpleExampleTest {
 
-	public void testSimple() {
-		System.out.println("Bout to test it");
+	public void testSerializer() {
 		Serializer serializer = new Persister();
-		File curent = new File(".");
-		System.out.println(curent.getAbsoluteFile());
 
 		// TODO Why isn't maven finding the test resources file correctly?
 		File file = new File("src/test/resources/case.xml");
-		System.out.println(file.exists());
-
 		try {
-			SimpleCase kase = serializer.read(SimpleCase.class, file);
-			System.out.println("My de-ser case" + kase);
+			Case kase = serializer.read(Case.class, file);
+			Assert.assertEquals("00053329", kase.getCaseNumber());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

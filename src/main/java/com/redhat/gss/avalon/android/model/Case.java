@@ -1,10 +1,12 @@
 package com.redhat.gss.avalon.android.model;
 
+import java.io.Serializable;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-import com.redhat.gss.strata.model.Comments;
+import com.redhat.gss.strata.model.TrackedEntity;
 
 /**
  * This is a clone of the model object in Support Services API.
@@ -12,62 +14,63 @@ import com.redhat.gss.strata.model.Comments;
  * @author Brian Dill
  * 
  */
-@Root
-public class Case {
+// Currently not strict because Calendar is not handled
+@Root(strict = false)
+public class Case extends TrackedEntity implements Serializable {
 
-	@Element
+	private static final long serialVersionUID = 7428830188443011412L;
+
+	@Element(required = false)
 	protected String id;
-	@Element
+	@Element(required = false)
 	protected String uri;
-	@Element
+	@Element(required = false)
 	protected String summary;
-	@Element
+	@Element(required = false)
 	protected String description;
-	@Element
+	@Element(required = false)
 	protected String status;
-	@Element
+	@Element(required = false)
 	protected String product;
-	@Element
+	@Element(required = false)
 	protected String component;
-	@Element
+	@Element(required = false)
 	protected String version;
-	@Element
+	@Element(required = false)
 	protected String type;
-	@Element
+	@Element(required = false)
 	protected String accountNumber;
-	@Element
+	@Element(required = false)
 	protected String reference;
-	@Element
+	@Element(required = false)
 	protected String notes;
-	@Element
+	@Element(required = false)
 	protected Boolean escalated;
-	@Element
+	@Element(required = false)
 	protected String contactName;
-	@Element
+	@Element(required = false)
 	protected String origin;
-	@Element
+	@Element(required = false)
 	protected String owner;
-	@Element
+	@Element(required = false)
 	protected String internalPriority;
-	@Element
+	@Element(required = false)
 	protected String internalStatus;
-	@Element
+	@Element(required = false)
 	protected String suppliedName;
-	@Element
+	@Element(required = false)
 	protected String suppliedPhone;
-	@Element
+	@Element(required = false)
 	protected String suppliedEmail;
-	@Element
+	@Element(required = false)
 	protected String severity;
-	@Element
+	@Element(required = false)
 	protected String folderNumber;
-	@Element
-	protected Comments comments;
-	@Attribute
+	@Attribute(required = false)
 	protected String alternateId;
 	@Attribute
 	protected String caseNumber;
-	@Attribute
+	@Attribute(required = false)
 	protected Boolean closed;
 
 	/**
@@ -554,27 +557,6 @@ public class Case {
 	}
 
 	/**
-	 * Gets the value of the comments property.
-	 * 
-	 * @return possible object is {@link Comments }
-	 * 
-	 */
-	public Comments getComments() {
-		return comments;
-	}
-
-	/**
-	 * Sets the value of the comments property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link Comments }
-	 * 
-	 */
-	public void setComments(Comments value) {
-		this.comments = value;
-	}
-
-	/**
 	 * Gets the value of the alternateId property.
 	 * 
 	 * @return possible object is {@link String }
@@ -635,6 +617,14 @@ public class Case {
 	 */
 	public void setClosed(Boolean value) {
 		this.closed = value;
+	}
+
+	/**
+	 * TODO Use ToStringBuilder from Apache commons.
+	 */
+	@Override
+	public String toString() {
+		return "Case " + caseNumber;
 	}
 
 }
