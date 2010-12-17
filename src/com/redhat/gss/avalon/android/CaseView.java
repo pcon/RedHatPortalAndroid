@@ -43,7 +43,7 @@ public class CaseView extends Activity {
 		severity.setText(supportCase.getSeverity());
 
 		final List<String> comments = new ArrayList<String>();
-		for (Comment comment : new CaseController().getAllComments(caseNumber)) {
+		for (Comment comment : new CaseController().getAllComments(this, caseNumber)) {
 			comments.add(comment.getText());
 		}
 

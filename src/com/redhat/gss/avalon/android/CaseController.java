@@ -25,24 +25,35 @@ public class CaseController {
 		return kase;
 	}
 
-	public List<Comment> getAllComments(String caseNumber) {
-		final List<Comment> comments = new ArrayList<Comment>();
+	public List<Comment> getAllComments(Context context, String caseNumber) {
+		DataHelper helper = new DataHelper(context);
+		List<Comment> commentList = helper.selectAllComments(caseNumber);
 
-		Comment comment = new Comment();
-		comment.setText("Issue Created (Severity: 2)");
-		comments.add(comment);
-
-		comment = new Comment();
-		comment.setText("Commets go here!");
-		comments.add(comment);
-
-		for (int i = 0; i < 50; i++) {
-			comment = new Comment();
-			comment.setText("Test comment " + i);
-			comments.add(comment);
+		if (commentList.isEmpty()) {
+			CommentParser cp = new CommentParser();
+			commentList = cp.getAllComments(caseNumber);
+			helper.insertAllComments(commentList);
 		}
 
-		return comments;
+		return commentList;
+	}
+
+	public void refreshCommentCache(Context context, String caseNumber) {
+		DataHelper helper = new DataHelper(context);
+		helper.deleteAllComments(caseNumber);
+
+		CommentParser cp = new CommentParser();
+		List<Comment> commentList = cp.getAllComments(caseNumber);
+		helper.insertAllComments(commentList);
+	}
+
+	public void refreshCaseCache(Context context) {
+		DataHelper helper = new DataHelper(context);
+		helper.deleteAllCases();
+
+		CaseParser cp = new CaseParser();
+		List<Case> caseList = cp.getAllCases();
+		helper.insertAllCases(caseList);
 	}
 
 	public List<Case> getAllCases(Context context) {
@@ -52,6 +63,7 @@ public class CaseController {
 		if (caseList.isEmpty()) {
 			CaseParser cp = new CaseParser();
 			caseList = cp.getAllCases();
+			helper.insertAllCases(caseList);
 		}
 
 		return caseList;
