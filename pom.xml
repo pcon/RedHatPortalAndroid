@@ -40,6 +40,13 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- unit test dependencies LEAVE THESE AT THE TOP!!! -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.9</version>
+			<scope>test</scope>
+		</dependency>
 		 <dependency>
 			<groupId>com.redhat.gss</groupId>
 			<artifactId>support-services-api</artifactId>
@@ -61,6 +68,11 @@
 			<version>1.6_r2</version>
 			<scope>provided</scope>
 		</dependency>	
+		<dependency>
+			<groupId>org.simpleframework</groupId>
+			<artifactId>simple-xml</artifactId>
+			<version>2.4</version>
+		</dependency>
 	</dependencies>
 
 </project>
