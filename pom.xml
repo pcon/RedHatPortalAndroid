@@ -46,6 +46,7 @@
 			<artifactId>testng</artifactId>
 			<version>5.9</version>
 			<scope>test</scope>
+			<classifier>jdk15</classifier>
 		</dependency>
 		 <dependency>
 			<groupId>com.redhat.gss</groupId>
@@ -72,6 +73,17 @@
 			<groupId>org.simpleframework</groupId>
 			<artifactId>simple-xml</artifactId>
 			<version>2.4</version>
+			<!-- Only needed for earlier JDKs -->
+			<exclusions>
+				<exclusion>
+					<groupId>stax</groupId>
+					<artifactId>stax</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>stax</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
