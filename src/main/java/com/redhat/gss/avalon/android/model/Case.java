@@ -6,10 +6,10 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-import com.redhat.gss.strata.model.TrackedEntity;
-
 /**
- * This is a clone of the model object in Support Services API.
+ * Note: This is a clone of the model object in Support Services API.
+ * 
+ * Represents a support case potentially containing comments and attachments.
  * 
  * @author Brian Dill
  * 
@@ -628,4 +628,3 @@ public class Case extends TrackedEntity implements Serializable {
 	}
 
 }
-

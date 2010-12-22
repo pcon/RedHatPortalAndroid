@@ -4,6 +4,14 @@ import java.io.Serializable;
 
 import org.simpleframework.xml.Element;
 
+/**
+ * Note: This is a clone of the model object in Support Services API.
+ * 
+ * Base class to abstract tracking information on domain entities.
+ * 
+ * @author Brian Dill
+ * 
+ */
 public abstract class TrackedEntity implements Serializable {
 
 	private static final long serialVersionUID = 4356197305201174666L;
@@ -57,4 +65,3 @@ public abstract class TrackedEntity implements Serializable {
 	}
 
 }
-

@@ -8,6 +8,12 @@ import android.content.Context;
 import com.redhat.gss.strata.model.Case;
 import com.redhat.gss.strata.model.Comment;
 
+/**
+ * Provides access to domain objects related to support cases.
+ * 
+ * @author Patrick Connelly
+ * 
+ */
 public class CaseController {
 
 	public Case getCase(Context context, String caseNumber) {
@@ -16,7 +22,7 @@ public class CaseController {
 		Case kase = helper.selectCase(caseNumber);
 
 		if (kase == null) {
-			//Just a place holder
+			// Just a place holder
 			CaseParser cp = new CaseParser();
 			List<Case> caseList = cp.getAllCases();
 			kase = caseList.get(0);
