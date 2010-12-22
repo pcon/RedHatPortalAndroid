@@ -5,3 +5,4 @@ target
 .settings
 .gitignore
 .externalToolBuilders
+gen/
