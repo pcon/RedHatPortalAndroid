@@ -13,7 +13,6 @@
 	</properties>
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
