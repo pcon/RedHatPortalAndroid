@@ -76,11 +76,21 @@ public class ShowHome extends Activity {
 		switch (item.getItemId()) {
 		case R.id.about:
 			aboutDialog();
+			return true;
 		case R.id.sort:
 			sortDialog();
+			return true;
+		case R.id.setup:
+			showSetup();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	private void showSetup() {
+		Intent i = new Intent(getApplicationContext(), Preferences.class);
+		startActivity(i);
 	}
 
 	private void sortDialog() {

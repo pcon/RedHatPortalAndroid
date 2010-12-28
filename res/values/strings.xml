@@ -4,7 +4,14 @@
 	<string name="app_name">Red Hat Portal</string>
 
 	<string name="new_case">New Case</string>
+
 	<string name="setup">Setup</string>
+	<string name="setup.authentication">Authentication</string>
+	<string name="setup.username.title">Username</string>
+	<string name="setup.username.desc">Your RHN username</string>
+	<string name="setup.password.title">Password</string>
+	<string name="setup.password.desc">Your RHN password</string>
+
 	<string name="about">About</string>
 	<string name="sort">Sort</string>
 	<string name="okay">Okay</string>
