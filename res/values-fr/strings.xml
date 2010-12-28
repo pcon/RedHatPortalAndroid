@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">[FR] Hello World, ShowHome!</string>
+	<string name="app_name">[FR] Red Hat Portal</string>
+
+	<string name="new_case">[FR] New Case</string>
+
+	<string name="setup">[FR] Setup</string>
+	<string name="setup.authentication">[FR] Authentication</string>
+	<string name="setup.username.title">[FR] Username</string>
+	<string name="setup.username.desc">[FR] Your RHN username</string>
+	<string name="setup.password.title">[FR] Password</string>
+	<string name="setup.password.desc">[FR] Your RHN password</string>
+
+	<string name="about">[FR] About</string>
+	<string name="sort">[FR] Sort</string>
+	<string name="okay">[FR] Okay</string>
+	<string name="about.title">[FR] Case Management App</string>
+	<string name="about.message">[FR] Red Hat GSS!</string>
+	<string name="caseView.title">[FR] Case Viewer</string>
+	<string name="caseView.top.title">[FR] Title</string>
+	<string name="caseView.top.status">[FR] Status</string>
+	<string name="caseView.top.owner">[FR] Owner</string>
+	<string name="caseView.top.severity">[FR] Severtiy</string>
+</resources>

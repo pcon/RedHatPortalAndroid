@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/setup.authentication">
+		<EditTextPreference
+			android:name="@string/setup.username.title"
+			android:summary="@string/setup.username.desc"
+			android:defaultValue=""
+			android:title="@string/setup.username.title"
+			android:key="usernamePref" />
+		<EditTextPreference
+			android:name="@string/setup.password.title"
+			android:summary="@string/setup.password.desc"
+			android:defaultValue=""
+			android:title="@string/setup.password.title"
+			android:key="passwordPref"
+			android:password="true" />
+	</PreferenceCategory>
+</PreferenceScreen>
