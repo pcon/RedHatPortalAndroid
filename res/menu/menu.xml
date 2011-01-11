@@ -2,12 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<item android:id="@+id/new_case" android:title="@string/new_case"
-		android:enabled="true" android:visible="true" android:icon="@android:drawable/ic_menu_add"></item>
-
+		android:enabled="true" android:visible="true"
+		android:icon="@android:drawable/ic_menu_add"></item>
+	<item android:id="@+id/refresh" android:title="@string/refresh"
+		android:enabled="true" android:visible="true"
+		android:icon="@android:drawable/ic_menu_rotate"></item>
 	<item android:id="@+id/sort" android:title="@string/sort"
 		android:enabled="true" android:visible="true"
 		android:icon="@android:drawable/ic_menu_sort_by_size"></item>
-
 	<item android:id="@+id/setup" android:title="@string/setup"
 		android:enabled="true" android:visible="true"
 		android:icon="@android:drawable/ic_menu_preferences"></item>

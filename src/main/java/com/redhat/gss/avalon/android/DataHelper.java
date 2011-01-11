@@ -86,6 +86,10 @@ public class DataHelper {
 		this.db = dbHelper.getWritableDatabase();
 	}
 
+	public void close() {
+		this.db.close();
+	}
+
 	/**
 	* Transforms a cursor from the query into a Case object
 	*

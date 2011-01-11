@@ -10,6 +10,7 @@ import com.redhat.gss.strata.model.Case;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,12 +27,17 @@ import android.widget.AdapterView.OnItemClickListener;
 public class ShowHome extends Activity {
 
 	private ListView mainList;
+	private NotificationManager nManager;
 	private final String TAG = "StrataApp";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		nManager.cancel(R.string.app_name);
 
 		final CaseController cc = new CaseController();
 		final List<Case> caseList = cc.getAllCases(this);
@@ -82,6 +88,10 @@ public class ShowHome extends Activity {
 			return true;
 		case R.id.setup:
 			showSetup();
+			return true;
+		case R.id.refresh:
+			CaseController cc = new CaseController();
+			cc.refreshCaseCache(this);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

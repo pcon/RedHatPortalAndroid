@@ -3,6 +3,8 @@
 	<string name="hello">Hello World, ShowHome!</string>
 	<string name="app_name">Red Hat Portal</string>
 
+	<string name="refresh">Refresh</string>
+
 	<string name="new_case">New Case</string>
 
 	<string name="setup">Setup</string>
@@ -22,4 +24,7 @@
 	<string name="caseView.top.status">Status</string>
 	<string name="caseView.top.owner">Owner</string>
 	<string name="caseView.top.severity">Severtiy</string>
+
+	<string name="notification_updated_subject">Case Updated</string>
+	<string name="notification_updated_body">Case %1$s Updated</string>
 </resources>
