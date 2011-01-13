@@ -12,7 +12,8 @@ public class Notifications {
 	private static final String LOG_NAME = "Notifications";
 	public static final int NOTIFICATION_ID_RECEIVED = 0x1221;
 
-	public static Boolean sendNotification(String subject, String body, Intent i, Context c) {
+	public static Boolean sendNotification(String subject, String body, Intent i, Context c, int Id) {
+		Log.d(LOG_NAME, "Creating notification " + subject);
 		NotificationManager nManager = (NotificationManager) c.getSystemService(c.NOTIFICATION_SERVICE);
           
 		Notification notification = new Notification(
@@ -34,7 +35,7 @@ public class Notifications {
           
 		notification.flags += Notification.FLAG_AUTO_CANCEL;
 
-		nManager.notify(NOTIFICATION_ID_RECEIVED, notification);
+		nManager.notify(Id, notification);
 
 		return true;
 	}

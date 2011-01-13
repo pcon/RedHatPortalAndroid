@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -78,16 +79,20 @@ public class CaseController {
 		helper.insertAllCases(caseList);
 		helper.close();
 
+
 		for (Case supportCase : caseList) {
 			Bundle bundle = new Bundle();
 			bundle.putString("caseNumber", supportCase.getCaseNumber());
 
 			Intent intent = new Intent(context, CaseView.class);
+			intent.setAction("actionstring" + System.currentTimeMillis());
+			intent.putExtra("notificationID", supportCase.getCaseNumber());
 			intent.putExtras(bundle);
 
+			int id = Integer.parseInt(supportCase.getCaseNumber().trim());
 			String subject = res.getString(R.string.notification_updated_subject);
 			String body = String.format(res.getString(R.string.notification_updated_body), supportCase.getCaseNumber());
-			Notifications.sendNotification(subject, body, intent, context);
+			Notifications.sendNotification(subject, body, intent, context, id);
 		}
 	}
 
