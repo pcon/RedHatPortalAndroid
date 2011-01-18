@@ -8,19 +8,8 @@
 	android:id="@+id/caseList">
 	<TableRow>
 		<TextView
-			android:id="@+id/caseNumber"
-			android:text="@+id/caseNumber"
-			android:textSize="10sp" />
-		<TextView
-			android:id="@+id/status"
-			android:text="@+id/status"
-			android:layout_gravity="right"
-			android:textSize="10sp" />
-	</TableRow>
-	<TableRow>
-		<TextView
-			android:id="@+id/summary"
-			android:text="@+id/summary"
+			android:id="@+id/body"
+			android:text="@+id/body"
 			android:layout_span="2"
 			android:layout_gravity="left"
 			android:paddingBottom="5px"

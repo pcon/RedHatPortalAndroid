@@ -27,6 +27,7 @@ public class CaseParser {
 			kase.setSummary("Out of Entitlements");
 			kase.setDescription("I am unable to register a new system.\nI get an out of Entitlements error when registering");
 			kase.setSeverity("1 (Urgent)");
+			kase.setStatus("Waiting on Customer");
 			kase.setEscalated(false);
 			kase.setClosed(false);
 			kase.setCreatedBy("Test Customer");
@@ -37,12 +38,14 @@ public class CaseParser {
 			kase.setLastModifiedDate(cal);
 
 			Case kase2 = new Case();
+			cal = Calendar.getInstance();
 
 			kase2.setId("0001235");
 			kase2.setCaseNumber("0001235");
 			kase2.setSummary("Error installing Satellite 5.3");
 			kase2.setDescription("I get an Out of Space exception when installing Satellite 5.3");
 			kase2.setSeverity("2 (High)");
+			kase2.setStatus("Waiting on Red Hat");
 			kase2.setEscalated(false);
 			kase2.setClosed(false);
 			kase2.setCreatedBy("Test Customer");
@@ -53,12 +56,14 @@ public class CaseParser {
 			kase2.setLastModifiedDate(cal);
 
 			Case kase3 = new Case();
+			cal = Calendar.getInstance();
 
 			kase3.setId("0001236");
 			kase3.setCaseNumber("0001236");
 			kase3.setSummary("My box got a kernel panic");
 			kase3.setDescription("My box hung, please help");
 			kase3.setSeverity("3 (Medium)");
+			kase3.setStatus("Closed");
 			kase3.setEscalated(false);
 			kase3.setClosed(false);
 			kase3.setCreatedBy("Test Customer");
@@ -69,12 +74,14 @@ public class CaseParser {
 			kase3.setLastModifiedDate(cal);
 
 			Case kase4 = new Case();
+			cal = Calendar.getInstance();
 
 			kase4.setId("0001237");
 			kase4.setCaseNumber("0001237");
 			kase4.setSummary("I need help setting up multipath");
 			kase4.setDescription("Multipath is broken.  Please help me set it up");
 			kase4.setSeverity("3 (Medium)");
+			kase4.setStatus("Pending Closure");
 			kase4.setEscalated(false);
 			kase4.setClosed(false);
 			kase4.setCreatedBy("Test Customer");

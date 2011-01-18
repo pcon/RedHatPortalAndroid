@@ -1,36 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
 
-
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:stretchColumns="1">
-		<TableRow>
-			<TextView android:text="@string/caseView.top.title"
-				android:padding="3dip" />
-			<TextView android:id="@+id/title" android:padding="3dip" />
-		</TableRow>
-		<TableRow>
-			<TextView android:text="@string/caseView.top.status"
-				android:padding="3dip" />
-			<TextView android:id="@+id/status" android:padding="3dip" />
-		</TableRow>
-		<TableRow>
-			<TextView android:text="@string/caseView.top.owner"
-				android:padding="3dip" />
-			<TextView android:id="@+id/owner" android:padding="3dip" />
-		</TableRow>
-		<TableRow>
-			<TextView android:text="@string/caseView.top.severity"
-				android:padding="3dip" />
-			<TextView android:id="@+id/severity" android:padding="3dip" />
-		</TableRow>
-
-		<ListView android:layout_width="fill_parent" android:id="@+id/commentList"
-			android:layout_height="wrap_content" android:layout_weight="1" />
-	</TableLayout>
-
-
-
+	<ListView android:id="@+id/caseDetail"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:scrollbars="none"
+		android:layout_weight="1" />
+	<ListView android:id="@+id/caseDescription"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1" />
+	<ListView android:id="@+id/caseComments"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1" />
 </LinearLayout>

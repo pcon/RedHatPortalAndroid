@@ -3,6 +3,8 @@ package com.redhat.gss.avalon.android;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -12,7 +14,82 @@ import com.redhat.gss.strata.model.Case;
 
 public class CaseUtils {
 	private static final String LOG_NAME = "CaseUtils";
+	
+	/** 
+	 * Gets a map of case fields to their Id
+	 *
+	 * @return The {@link Map } of data
+	 */
+	public static Map<String, Integer> getFieldToIdMap() {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("id", R.id.id);
+		map.put("uri", R.id.uri);
+		map.put("summary", R.id.summary);
+		map.put("description", R.id.description);
+		map.put("status", R.id.status);
+		map.put("product", R.id.product);
+		map.put("component", R.id.component);
+		map.put("version", R.id.version);
+		map.put("type", R.id.type);
+		map.put("accountNumber", R.id.accountNumber);
+		map.put("reference", R.id.reference);
+		map.put("notes", R.id.notes);
+		map.put("contactName", R.id.contactName);
+		map.put("origin", R.id.origin);
+		map.put("owner", R.id.owner);
+		map.put("internalPriority", R.id.internalPriority);
+		map.put("internalStatus", R.id.internalStatus);
+		map.put("suppliedName", R.id.suppliedName);
+		map.put("suppliedPhone", R.id.suppliedPhone);
+		map.put("suppliedEmail", R.id.suppliedEmail);
+		map.put("severity", R.id.severity);
+		map.put("folderNumber", R.id.folderNumber);
+		map.put("alternateId", R.id.alternateId);
+		map.put("caseNumber", R.id.caseNumber);
+		map.put("createdBy", R.id.createdBy);
+		map.put("lastModifiedBy", R.id.lastModifiedBy);
+		map.put("escalated", R.id.escalated);
+		map.put("closed", R.id.closed);
+		map.put("createdDate", R.id.createdDate);
+		map.put("lastModifiedDate", R.id.lastModifiedDate);
+		return map;
+	}
 
+	/**
+	 * Gets an array of field names
+	 *
+	 * @return The field names
+	 */
+	public static String[] getFieldArray() {
+		Map<String, Integer> map = getFieldToIdMap();
+		return map.keySet().toArray(new String[0]);
+	}
+
+	/**
+	 * Gets an array of Ids
+	 *
+	 * @return The ids
+	 */
+	public static int[] getIdArray() {
+		Map<String, Integer> map = getFieldToIdMap();
+		int[] array = new int[map.size()];
+		Integer[] intArray = map.values().toArray(new Integer[0]);
+
+		for (int i=0; i < map.size(); i++) {
+			array[i] = intArray[i].intValue();
+		}
+
+		return array;
+	}
+
+	/**
+	 * Sets the specified field on a case
+	 *
+	 * @param c The case to populate
+	 * @param field The field to populate
+	 * @param value The data to put in the field
+	 * @return The case
+	 */
 	public static Case set(Case c, String field, Object value) {
 		if (field.equals("id")) {
 			c.setId((String)(value)); 
@@ -212,5 +289,70 @@ public class CaseUtils {
 		Log.d(LOG_NAME, "dataSet.size() = " + dataSet.size());
 
 		return dataSet.toArray(new String[0]);
+	}
+
+	/**
+	* Returns an map of keys to their data value
+	*
+	* @param c The case to use
+	* @return An map of the data
+	*/
+	public static Map<String, String> getMap(Case c) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", c.getId());
+		map.put("uri", c.getUri());
+		map.put("summary", c.getSummary());
+		map.put("description", c.getDescription());
+		map.put("status", c.getStatus());
+		map.put("product", c.getProduct());
+		map.put("component", c.getComponent());
+		map.put("version", c.getVersion());
+		map.put("type", c.getType());
+		map.put("accountNumber", c.getAccountNumber());
+		map.put("reference", c.getReference());
+		map.put("notes", c.getNotes());
+		map.put("contactName", c.getContactName());
+		map.put("origin", c.getOrigin());
+		map.put("owner", c.getOwner());
+		map.put("internalPriority", c.getInternalPriority());
+		map.put("internalStatus", c.getInternalStatus());
+		map.put("suppliedName", c.getSuppliedName());
+		map.put("suppliedPhone", c.getSuppliedPhone());
+		map.put("suppliedEmail", c.getSuppliedEmail());
+		map.put("severity", c.getSeverity());
+		map.put("folderNumber", c.getFolderNumber());
+		map.put("alternateId", c.getAlternateId());
+		map.put("caseNumber", c.getCaseNumber());
+		map.put("createdBy", c.getCreatedBy());
+		map.put("lastModifiedBy", c.getLastModifiedBy());
+
+		if (c.isEscalated()) {
+			map.put("escalated", "1");
+		} else {
+			map.put("escalated", "0");
+		}
+		if (c.isClosed()) {
+			map.put("closed", "1");
+		} else {
+			map.put("closed", "0");
+		}
+
+		Calendar createdCal = c.getCreatedDate();
+		if (createdCal == null) {
+			map.put("createdDate", null);
+		} else {
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+			map.put("createdDate", df.format(createdCal.getTime()));
+		}
+
+		Calendar modifiedCal = c.getLastModifiedDate();
+		if (modifiedCal == null) {
+			map.put("lastModifiedDate", null);
+		} else {
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+			map.put("lastModifiedDate", df.format(modifiedCal.getTime()));
+		}
+
+		return map;
 	}
 }

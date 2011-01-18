@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+     <TextView android:id="@+id/id"
+			android:name="@+id/id" />
+	<TextView android:id="@+id/uri" android:name="@+id/uri" />
+	<TextView android:id="@+id/internalStatus" android:name="@+id/internalStatus" />
+	<TextView android:id="@+id/description" android:name="@+id/description" />
+	<TextView android:id="@+id/status" android:name="@+id/status" />
+	<TextView android:id="@+id/product" android:name="@+id/product" />
+	<TextView android:id="@+id/component" android:name="@+id/component" />
+	<TextView android:id="@+id/version" android:name="@+id/version" />
+	<TextView android:id="@+id/type" android:name="@+id/type" />
+	<TextView android:id="@+id/accountNumber" android:name="@+id/accountNumber" />
+	<TextView android:id="@+id/reference" android:name="@+id/reference" />
+	<TextView android:id="@+id/notes" android:name="@+id/notes" />
+	<TextView android:id="@+id/contactName" android:name="@+id/contactName" />
+	<TextView android:id="@+id/origin" android:name="@+id/origin" />
+	<TextView android:id="@+id/owner" android:name="@+id/owner" />
+	<TextView android:id="@+id/internalPriority" android:name="@+id/internalPriority" />
+	<TextView android:id="@+id/internalStatus" android:name="@+id/internalStatus" />
+	<TextView android:id="@+id/suppliedName" android:name="@+id/suppliedName" />
+	<TextView android:id="@+id/suppliedPhone" android:name="@+id/suppliedPhone" />
+	<TextView android:id="@+id/suppliedEmail" android:name="@+id/suppliedEmail" />
+	<TextView android:id="@+id/severity" android:name="@+id/severity" />
+	<TextView android:id="@+id/folderNumber" android:name="@+id/folderNumber" />
+	<TextView android:id="@+id/alternateId" android:name="@+id/alternateId" />
+	<TextView android:id="@+id/caseNumber" android:name="@+id/caseNumber" />
+	<TextView android:id="@+id/createdBy" android:name="@+id/createdBy" />
+	<TextView android:id="@+id/lastModifiedBy" android:name="@+id/lastModifiedBy" />
+	<TextView android:id="@+id/escalated" android:name="@+id/escalated" />
+	<TextView android:id="@+id/closed" android:name="@+id/closed" />
+	<TextView android:id="@+id/createdDate" android:name="@+id/createdDate" />
+	<TextView android:id="@+id/lastModifiedDate" android:name="@+id/lastModifiedDate" />
+</LinearLayout>

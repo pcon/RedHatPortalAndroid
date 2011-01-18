@@ -9,12 +9,23 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.SimpleAdapter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import com.redhat.gss.strata.model.Case;
 import com.redhat.gss.strata.model.Comment;
 
 public class CaseView extends Activity {
 
+	private ListView caseDetail;
+	private ListView caseDescription;
+	private ListView caseComments;
 	final String tag = "CaseView: ";
 
 	@Override
@@ -29,31 +40,30 @@ public class CaseView extends Activity {
 		setTitle("Case " + caseNumber);
 
 		final Case supportCase = new CaseController().getCase(this, caseNumber);
+		final List<Map<String, String>> caseList = new ArrayList<Map<String, String>>();
+		Map<String, String> caseMap = CaseUtils.getMap(supportCase);
+		caseList.add(caseMap);
 
-		final TextView title = (TextView) findViewById(R.id.title);
-		title.setText(supportCase.getDescription());
+		String[] caseFields = CaseUtils.getFieldArray();
+		int[] caseKeys = CaseUtils.getIdArray();
 
-		final TextView status = (TextView) findViewById(R.id.status);
-		status.setText(supportCase.getStatus());
+		SimpleAdapter caseAdapter = new SimpleAdapter(this, caseList, R.layout.case_detail, caseFields, caseKeys);
 
-		final TextView owner = (TextView) findViewById(R.id.owner);
-		owner.setText(supportCase.getOwner());
+		caseDetail = (ListView) findViewById(R.id.caseDetail);
+		caseDetail.setAdapter(caseAdapter);
 
-		final TextView severity = (TextView) findViewById(R.id.severity);
-		severity.setText(supportCase.getSeverity());
-
-		final List<String> comments = new ArrayList<String>();
+		final List<Map<String, String>> commentList = new ArrayList<Map<String, String>>();
 		for (Comment comment : new CaseController().getAllComments(this, caseNumber)) {
-			comments.add(comment.getText());
+			Map<String, String> commentMap = CommentUtils.getMap(comment);
+			commentList.add(commentMap);
 		}
 
-		Collections.reverse(comments);
+		String[] commentFields = CommentUtils.getFieldArray();
+		int[] commentKeys = CommentUtils.getIdArray();
 
-		final ArrayAdapter<String> aa = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, comments);
-		// aa.getView(position, convertView, parent);
+		SimpleAdapter commentAdapter = new SimpleAdapter(this, commentList, R.layout.comment_list_item, commentFields, commentKeys);
 
-		final ListView commentList = (ListView) findViewById(R.id.commentList);
-		commentList.setAdapter(aa);
+		caseComments = (ListView) findViewById(R.id.caseComments);
+		caseComments.setAdapter(commentAdapter);
 	}
 }

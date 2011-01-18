@@ -48,20 +48,22 @@ public class ShowHome extends Activity {
 
 		final List<Map<String, String>> caseSummary = new ArrayList<Map<String, String>>();
 		for (Case supportCase : caseList) {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("caseNumber", supportCase.getCaseNumber());
-			map.put("description", supportCase.getDescription());
-			map.put("status", "Waiting on Red Hat");
-			Calendar lastMod = supportCase.getLastModifiedDate();
-			if (lastMod != null) {
-				DateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
-				map.put("lastModifiedDate", this.getString(R.string.updated) + " " + df.format(supportCase.getLastModifiedDate().getTime()));
-			}
+			Map<String, String> map = CaseUtils.getMap(supportCase);
+
+			String cDate = this.getString(R.string.created) + " " + map.get("createdDate");
+			map.put("createdDate", cDate);
+
+			String mDate = this.getString(R.string.updated) + " " + map.get("lastModifiedDate");
+			map.put("lastModifiedDate", mDate);
+
 			caseSummary.add(map);
 		}
 
-		String [] fields = { "caseNumber", "description", "status", "lastModifiedDate" };
-		int [] keys = { R.id.caseNumber, R.id.description, R.id.status, R.id.lastModifiedDate };
+		//String [] fields = { "caseNumber", "summary", "status", "lastModifiedDate" };
+		//int [] keys = { R.id.caseNumber, R.id.summary, R.id.status, R.id.lastModifiedDate };
+
+		String [] fields = CaseUtils.getFieldArray();
+		int[] keys = CaseUtils.getIdArray();
 
 		SimpleAdapter adapter = new SimpleAdapter(this, caseSummary, R.layout.case_list_item, fields, keys);
 
