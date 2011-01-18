@@ -2,6 +2,9 @@ package com.redhat.gss.avalon.android;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import android.util.Log;
 
@@ -72,6 +75,28 @@ public class CaseUtils {
 				c.setClosed(true); 
 			} else {
 				c.setClosed(false);
+			}
+		} else if (field.equals("createdBy")) {
+			c.setCreatedBy((String)(value));
+		} else if (field.equals("createdDate")) {
+			try {
+				Calendar cal = Calendar.getInstance();
+				DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+				cal.setTime(df.parse((String)(value)));
+				c.setCreatedDate(cal);
+			} catch (Exception e) {
+				Log.e(LOG_NAME, "Error parsing date " + e.toString());
+			}
+		} else if (field.equals("lastModifiedBy")) {
+			c.setLastModifiedBy((String)(value));
+		} else if (field.equals("lastModifiedDate")) {
+			try {
+				Calendar cal = Calendar.getInstance();
+				DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+				cal.setTime(df.parse((String)(value)));
+				c.setLastModifiedDate(cal);
+			} catch (Exception e) {
+				Log.e(LOG_NAME, "Error parsing date " + e.toString());
 			}
 		} else {
 			Log.e(LOG_NAME, "Unknown field '"+field+"'");
@@ -152,6 +177,26 @@ public class CaseUtils {
 					dataSet.add("1");
 				} else {
 					dataSet.add("0");
+				}
+			} else if (field.equals("createdBy")) {
+				dataSet.add(GenericUtils.sqlNull(c.getCreatedBy()));
+			} else if (field.equals("createdDate")) {
+				Calendar cal = c.getCreatedDate();
+				if (cal == null) {
+					dataSet.add(GenericUtils.sqlNull(null));
+				} else {
+					DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+					dataSet.add(GenericUtils.sqlNull(df.format(cal.getTime())));
+				}
+			} else if (field.equals("lastModifiedBy")) {
+				dataSet.add(GenericUtils.sqlNull(c.getLastModifiedBy()));
+			} else if (field.equals("lastModifiedDate")) {
+				Calendar cal = c.getLastModifiedDate();
+				if (cal == null) {
+					dataSet.add(GenericUtils.sqlNull(null));
+				} else {
+					DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+					dataSet.add(GenericUtils.sqlNull(df.format(cal.getTime())));
 				}
 			} else {
 				Log.e(LOG_NAME, "Unknown field '"+field+"'");

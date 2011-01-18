@@ -27,7 +27,7 @@ public class DataHelper {
 	
 	private static final String LOG_NAME = "DataHelper";
 
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	private static final String DATABASE_NAME = "AvalonAndroid.db";
 	private static final String CASE_TABLE_NAME = "supportCases";
 	private static final String CASE_TABLE_ORDER_BY = "id desc";
@@ -35,7 +35,8 @@ public class DataHelper {
 	private static final String[] CASE_TABLE_COLUMNS = new String[] { "id", "uri", "summary", "description",
 		"status", "product", "component", "version", "type", "accountNumber", "reference", "notes",
 		"escalated", "contactName", "origin", "owner", "internalPriority", "internalStatus", "suppliedName",
-		"suppliedPhone", "suppliedEmail", "severity", "folderNumber", "alternateId", "caseNumber", "closed" };
+		"suppliedPhone", "suppliedEmail", "severity", "folderNumber", "alternateId", "caseNumber", "closed",
+		"createdDate", "createdBy", "lastModifiedDate", "lastModifiedBy" };
 
 	private static final String CASE_TABLE_CREATE = 
 		"CREATE TABLE " + CASE_TABLE_NAME + " (" +
@@ -64,12 +65,17 @@ public class DataHelper {
 		"folderNumber TEXT, " +
 		"alternateId TEXT, " +
 		"caseNumber TEXT PRIMARY KEY, " + 
-		"closed INTEGER);";
+		"closed INTEGER, " +
+		"createdDate DATE, " +
+		"createdBy TEXT, " +
+		"lastModifiedDate DATE, " +
+		"lastModifiedBy TEXT);";
 
 	private static final String COMMENT_TABLE_NAME = "comments";
 	private static final String COMMENT_TABLE_ORDER_BY = "";
 	private static final String COMMENT_TABLE_DROP = "DROP TABLE IF EXISTS " + COMMENT_TABLE_NAME;
-	private static final String[] COMMENT_TABLE_COLUMNS = new String[] { "id", "title", "body", "uri", "public", "caseNumber" };
+	private static final String[] COMMENT_TABLE_COLUMNS = new String[] { "id", "title", "body", "uri", "public", "caseNumber",
+		"createdDate", "createdBy", "lastModifiedDate", "lastModifiedBy" };
 
 	private static final String COMMENT_TABLE_CREATE =
 		"CREATE TABLE " + COMMENT_TABLE_NAME + " (" +
@@ -78,7 +84,11 @@ public class DataHelper {
 		"title TEXT, " + 
 		"body TEXT, " +
 		"public INTEGER, " +
-		"caseNumber TEXT);";
+		"caseNumber TEXT, " +
+		"createdDate DATE, " +
+		"createdBy TEXT, " +
+		"lastModifiedDate DATE, " +
+		"lastModifiedBy TEXT);";
 
 	public DataHelper (Context context) {
 		this.context = context;

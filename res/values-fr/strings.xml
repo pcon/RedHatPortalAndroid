@@ -25,6 +25,9 @@
 	<string name="caseView.top.owner">[FR] Owner</string>
 	<string name="caseView.top.severity">[FR] Severtiy</string>
 
+	<string name="created">[FR] Created:</string>
+	<string name="updated">[FR] Updated:</string>
+
 	<string name="notification_updated_subject">[FR] Case Updated</string>
 	<string name="notification_updated_body">[FR] Case #{caseNumber} Updated</string>
 </resources>

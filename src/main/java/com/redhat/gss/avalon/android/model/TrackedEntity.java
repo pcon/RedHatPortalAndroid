@@ -1,6 +1,7 @@
 package com.redhat.gss.avalon.android.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import org.simpleframework.xml.Element;
 
@@ -20,7 +21,13 @@ public abstract class TrackedEntity implements Serializable {
 	protected String createdBy;
 
 	@Element
+	protected Calendar createdDate;
+
+	@Element
 	protected String lastModifiedBy;
+
+	@Element
+	protected Calendar lastModifiedDate;
 
 	/**
 	 * Gets the value of the createdBy property.
@@ -44,6 +51,27 @@ public abstract class TrackedEntity implements Serializable {
 	}
 
 	/**
+	 * Gets the value of the createdDate property.
+	 *
+	 * @return possible object is {@link Calendar }
+	 *
+	 */
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	/**
+	 * Sets the value of the createdDate property.
+	 *
+	 * @param value
+	 *		    allowed object is {@link Calendar }
+	 *
+	 */
+	public void setCreatedDate(Calendar value) {
+		this.createdDate = value;
+	}
+
+	/**
 	 * Gets the value of the lastModifiedBy property.
 	 * 
 	 * @return possible object is {@link String }
@@ -64,4 +92,24 @@ public abstract class TrackedEntity implements Serializable {
 		this.lastModifiedBy = value;
 	}
 
+	/**
+	 * Gets the value of the lastModifiedDate property.
+	 *
+	 * @return possible object is {@link Calendar }
+	 *
+	 */
+	public Calendar getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+
+	/**
+	 * Sets the value of the lastModifiedDate property
+	 *
+	 * @param value
+	 *		    allowed object is {@link Calendar }
+	 *
+	 */
+	public void setLastModifiedDate(Calendar value) {
+		this.lastModifiedDate = value;
+	}
 }

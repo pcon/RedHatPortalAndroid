@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import com.redhat.gss.strata.model.Case;
 
@@ -21,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TableLayout;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -42,17 +46,27 @@ public class ShowHome extends Activity {
 		final CaseController cc = new CaseController();
 		final List<Case> caseList = cc.getAllCases(this);
 
-		final List<Map<String, ?>> caseSummary = new ArrayList<Map<String, ?>>();
+		final List<Map<String, String>> caseSummary = new ArrayList<Map<String, String>>();
 		for (Case supportCase : caseList) {
-			final Map<String, Object> map = new HashMap<String, Object>();
+			Map<String, String> map = new HashMap<String, String>();
 			map.put("caseNumber", supportCase.getCaseNumber());
-			map.put("caseTitle", supportCase.getDescription());
+			map.put("description", supportCase.getDescription());
+			map.put("status", "Waiting on Red Hat");
+			Calendar lastMod = supportCase.getLastModifiedDate();
+			if (lastMod != null) {
+				DateFormat df = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+				map.put("lastModifiedDate", this.getString(R.string.updated) + " " + df.format(supportCase.getLastModifiedDate().getTime()));
+			}
 			caseSummary.add(map);
 		}
 
+		String [] fields = { "caseNumber", "description", "status", "lastModifiedDate" };
+		int [] keys = { R.id.caseNumber, R.id.description, R.id.status, R.id.lastModifiedDate };
+
+		SimpleAdapter adapter = new SimpleAdapter(this, caseSummary, R.layout.case_list_item, fields, keys);
+
 		mainList = (ListView) findViewById(R.id.mainList);
-		mainList.setAdapter(new SimpleAdapter(this, caseSummary, android.R.layout.simple_list_item_2, new String[] {
-				"caseNumber", "caseTitle" }, new int[] { android.R.id.text1, android.R.id.text2 }));
+		mainList.setAdapter(adapter);
 
 		mainList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
