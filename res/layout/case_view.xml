@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-	<ListView android:id="@+id/caseDetail"
+	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:scrollbars="none"
-		android:layout_weight="1" />
-	<ListView android:id="@+id/caseDescription"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="1" />
+		android:id="@+id/case_detail"
+		android:stretchColumns="*">
+		<TableRow>
+			<TextView android:id="@+id/summary"
+					android:layout_span="2"
+					android:textSize="16sp" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/caseNumber"
+					android:text="@+id/caseNumber"
+					android:textSize="10sp"/>
+			<TextView android:id="@+id/status"
+					android:text="@+id/status"
+					android:layout_gravity="right"
+					android:textSize="10sp" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/severity"
+					android:text="@+id/severity"
+					android:textSize="10sp" />
+			<TextView android:id="@+id/type"
+					android:text="@+id/type"
+					android:layout_gravity="right"
+					android:textSize="10sp" />
+		</TableRow>
+	</TableLayout>
+
 	<ListView android:id="@+id/caseComments"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"

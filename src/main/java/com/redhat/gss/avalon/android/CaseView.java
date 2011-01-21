@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TableLayout;
 import android.widget.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ import com.redhat.gss.strata.model.Comment;
 
 public class CaseView extends Activity {
 
-	private ListView caseDetail;
+	private TableLayout caseDetail;
 	private ListView caseDescription;
 	private ListView caseComments;
 	final String tag = "CaseView: ";
@@ -41,27 +42,39 @@ public class CaseView extends Activity {
 
 		final Case supportCase = new CaseController().getCase(this, caseNumber);
 		final List<Map<String, String>> caseList = new ArrayList<Map<String, String>>();
-		Map<String, String> caseMap = CaseUtils.getMap(supportCase);
-		caseList.add(caseMap);
 
-		String[] caseFields = CaseUtils.getFieldArray();
-		int[] caseKeys = CaseUtils.getIdArray();
+		final TextView summary = (TextView) findViewById(R.id.summary);
+		summary.setText(supportCase.getSummary());
 
-		SimpleAdapter caseAdapter = new SimpleAdapter(this, caseList, R.layout.case_detail, caseFields, caseKeys);
+		final TextView caseNumberView = (TextView) findViewById(R.id.caseNumber);
+		caseNumberView.setText(supportCase.getCaseNumber());
 
-		caseDetail = (ListView) findViewById(R.id.caseDetail);
-		caseDetail.setAdapter(caseAdapter);
+		final TextView status = (TextView) findViewById(R.id.status);
+		status.setText(supportCase.getStatus());
 
-		final List<Map<String, String>> commentList = new ArrayList<Map<String, String>>();
-		for (Comment comment : new CaseController().getAllComments(this, caseNumber)) {
+		final TextView severity = (TextView) findViewById(R.id.severity);
+		severity.setText(supportCase.getSeverity());
+
+		final TextView type = (TextView) findViewById(R.id.type);
+		type.setText(supportCase.getType());
+
+		final List<Map<String, String>> commentMapList = new ArrayList<Map<String, String>>();
+		List<Comment> commentList = new CaseController().getAllComments(this, caseNumber);
+
+		Comment initialComment = new Comment();
+		initialComment.setText(supportCase.getDescription());
+		initialComment.setPublic(true);
+		commentList.add(initialComment);
+
+		for (Comment comment : commentList) {
 			Map<String, String> commentMap = CommentUtils.getMap(comment);
-			commentList.add(commentMap);
+			commentMapList.add(commentMap);
 		}
 
 		String[] commentFields = CommentUtils.getFieldArray();
 		int[] commentKeys = CommentUtils.getIdArray();
 
-		SimpleAdapter commentAdapter = new SimpleAdapter(this, commentList, R.layout.comment_list_item, commentFields, commentKeys);
+		SimpleAdapter commentAdapter = new SimpleAdapter(this, commentMapList, R.layout.comment_list_item, commentFields, commentKeys);
 
 		caseComments = (ListView) findViewById(R.id.caseComments);
 		caseComments.setAdapter(commentAdapter);

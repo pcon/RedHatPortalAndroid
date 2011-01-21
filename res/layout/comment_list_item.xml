@@ -3,7 +3,7 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:stretchColumns="*"
-	android:paddingBottom="10px"
+	android:paddingBottom="5px"
 	android:paddingTop="10px"
 	android:id="@+id/caseList">
 	<TableRow>
